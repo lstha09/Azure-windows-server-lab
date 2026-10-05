@@ -55,7 +55,8 @@ Example command:
 ```powershell
 Get-LocalUser
 
-## OpenSSH Troubleshooting and Remote SSH Test
+
+OpenSSH Troubleshooting and Remote SSH Test
 
 Event Viewer showed a Service Control Manager error:
 
@@ -63,7 +64,7 @@ Event Viewer showed a Service Control Manager error:
 - Service: OpenSSH SSH Server
 - Message: The OpenSSH SSH Server service terminated unexpectedly.
 
-### Troubleshooting Steps
+Troubleshooting Steps
 
 Checked the SSH service status:
 
