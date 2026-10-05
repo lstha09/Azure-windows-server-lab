@@ -54,6 +54,7 @@ Example command:
 
 ```powershell
 Get-LocalUser
+```
 
 ## OpenSSH Troubleshooting and Remote SSH Test
 
