@@ -190,4 +190,53 @@ Suggested evidence:
 
 ## 9. Project Summary
 
-This
+This project documents a structured approach to troubleshooting Azure RDP connectivity issues. It covers VM status, public IP addresses, NSG rules, TCP port testing, Windows Firewall, Remote Desktop Services, client networking, and credentials.
+
+The exercise also demonstrates security best practices and awareness of Azure costs. The next step is to perform the checks against an available lab VM when this can be done safely within the €0 monthly budget.
+
+
+## 10. Client-Side Connectivity Test Results
+
+### Test 1: TCP port 3389 to example.com
+
+**Command:**
+
+```bash
+nc -vz -G 5 example.com 3389
+```
+
+**Result:** Connection timed out.
+
+**Interpretation:** The TCP connection to port 3389 was not established. This does not confirm an Azure problem because example.com is not the Azure VM.
+
+### Test 2: TCP port 443 to example.com
+
+**Command:**
+
+```bash
+nc -vz -G 5 example.com 443
+```
+
+**Result:** Connection timed out.
+
+**Interpretation:** The TCP connection test did not succeed. The reason was not established by this test alone.
+
+### Test 3: HTTPS request from Terminal
+
+**Command:**
+
+```bash
+curl -I --connect-timeout 5 --max-time 10 https://example.com
+```
+
+**Result:** `HTTP/2 200`
+
+**Interpretation:** Terminal successfully received an HTTP response over HTTPS.
+
+### Current Conclusion
+
+HTTPS connectivity from Terminal is working. The earlier TCP port test failures do not establish a general internet outage or an Azure configuration fault.
+
+The next stage is to review the simulated Azure-side troubleshooting steps, including VM status, public IP address, Network Security Group rules, and Windows Remote Desktop settings.
+
+**Cost:** No Azure resources created; no Azure VM charges incurred for these tests.
