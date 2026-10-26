@@ -240,3 +240,48 @@ HTTPS connectivity from Terminal is working. The earlier TCP port test failures 
 The next stage is to review the simulated Azure-side troubleshooting steps, including VM status, public IP address, Network Security Group rules, and Windows Remote Desktop settings.
 
 **Cost:** No Azure resources created; no Azure VM charges incurred for these tests.
+
+## 11. Azure NSG Troubleshooting Simulation
+
+### Support Ticket AZ-RDP-002
+
+**Issue:** A user cannot connect to a Windows Server VM using Remote Desktop Protocol (RDP).
+
+**Affected port:** TCP 3389
+
+**Simulated finding:** An inbound deny rule at priority 100 matches the RDP connection, while an allow rule at priority 200 permits TCP 3389 from an authorized source IP address.
+
+### Root Cause
+
+The matching deny rule has a higher priority than the allow rule. Azure evaluates the deny rule first and blocks the connection.
+
+This finding is based on a simulated configuration, not a live Azure investigation.
+
+### Proposed Resolution
+
+In the simulated scenario, change the allow rule's priority from 200 to 50 while retaining the restriction to the authorized source IP address.
+
+This allows the matching, authorized RDP traffic to be evaluated by the allow rule before the conflicting deny rule.
+
+Before applying a real change, verify all relevant rule conditions, including source, destination, protocol, port, direction, and any NSG rules attached to the subnet or network interface.
+
+### Security Considerations
+
+Do not allow inbound TCP 3389 from `0.0.0.0/0` as a general troubleshooting fix. This exposes RDP to connection attempts from any IPv4 address.
+
+Prefer restricted source IP addresses, VPN connectivity, or a more secure remote-access method where appropriate.
+
+### Validation Plan
+
+After an authorized change in a real environment:
+
+1. Confirm the effective network security rules.
+2. Test TCP connectivity to port 3389.
+3. Attempt an RDP connection from the authorized source.
+4. Record the actual result and any remaining errors.
+
+No live validation was performed for this simulation.
+
+### Cost and Resource Status
+
+No Azure resources were created or modified. The exercise used a hypothetical NSG configuration and incurred no Azure resource charges.
