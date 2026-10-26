@@ -285,3 +285,39 @@ No live validation was performed for this simulation.
 ### Cost and Resource Status
 
 No Azure resources were created or modified. The exercise used a hypothetical NSG configuration and incurred no Azure resource charges.
+
+## 12. NSG Rule Evaluation Exercise
+
+### Objective
+
+Practise identifying the matching Azure Network Security Group rule for inbound RDP traffic.
+
+### Simulated Rules
+
+| Priority | Source | Destination port | Action |
+|---:|---|---:|---|
+| 50 | 203.0.113.10 | 3389 | Allow |
+| 100 | Any | 3389 | Deny |
+| 65000 | Any | Any | Deny |
+
+### Results
+
+**Test 1:** Source `203.0.113.10`, TCP port 3389.
+
+Result: Allowed by priority 50 because the source matches the specific allow rule.
+
+**Test 2:** Source `198.51.100.25`, TCP port 3389.
+
+Result: Denied by priority 100 because the source does not match the specific allow rule and matches the general deny rule.
+
+**Security decision:** Restrict RDP access to authorized source IP addresses or an approved private-access method.
+
+### Key Learning
+
+Azure NSG rules are evaluated by priority, with lower numbers evaluated first. The first matching rule determines the outcome for the connection at that NSG.
+
+In a real incident, inspect all relevant rule conditions and any NSGs attached to the subnet and network interface.
+
+**Exercise status:** Completed as a simulation. No live Azure rules were changed.
+
+**Cost:** No Azure resources were created or modified; no Azure resource charges were incurred for this exercise.
