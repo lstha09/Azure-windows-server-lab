@@ -321,3 +321,37 @@ In a real incident, inspect all relevant rule conditions and any NSGs attached t
 **Exercise status:** Completed as a simulation. No live Azure rules were changed.
 
 **Cost:** No Azure resources were created or modified; no Azure resource charges were incurred for this exercise.
+
+## 13. Ticket AZ-RDP-003 — End-to-End RDP Troubleshooting (Simulated)
+
+### Project type
+Documentation-only troubleshooting simulation. No live Azure resources were created, started, or modified.
+
+### Incident description
+A user could not connect to a Windows Server virtual machine through Remote Desktop Protocol (RDP). The initial symptom was a connection timeout.
+
+### Troubleshooting process
+
+1. **Check the VM and network configuration.** In the simulated evidence, the VM was running and had a public IP address.
+2. **Verify the source IP address.** The user's public IP had changed after switching Wi-Fi networks, so it no longer matched the NSG allow rule.
+3. **Propose a secure NSG fix.** Update the approved source-IP restriction only after verifying the current IP and obtaining authorization. Never expose RDP to all public IP addresses.
+4. **Check effective network rules and routing.** Review the NSGs associated with the network interface and subnet, as applicable, along with the network path.
+5. **Check Windows Server.** Verify Remote Desktop settings, Windows Firewall rules, Remote Desktop Services, and the RDP listener.
+6. **Investigate authentication.** If TCP connectivity succeeds but login fails, verify the username format, account status, and credentials.
+7. **Check authorization.** If the user lacks Remote Desktop sign-in permission, request approval and grant only the required access.
+8. **Validate the resolution.** Retest TCP connectivity and RDP login. Close the ticket only after successful validation.
+
+### Simulated findings
+The exercise used hypothetical evidence to practise identifying a source-IP mismatch, a disabled Windows Firewall rule, and missing Remote Desktop sign-in permission. These were assumed findings for the exercise, not a confirmed diagnosis of a real Azure VM.
+
+### Security considerations
+- Follow the principle of least privilege.
+- Keep RDP access restricted to authorized source IPs or an appropriate private-access solution.
+- Do not disable the entire Windows Firewall.
+- Do not grant administrator privileges unless required and approved.
+- Never include passwords, secrets, or sensitive connection details in GitHub documentation.
+
+### Final outcome
+**Simulated status:** Resolved after the proposed network, firewall, and authorization fixes were applied and the final connection tests succeeded.
+
+**Cost control:** No Azure resources were created, started, or modified during this exercise. No Azure resource charges were incurred by the simulation.
