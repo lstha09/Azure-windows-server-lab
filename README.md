@@ -148,3 +148,65 @@ The troubleshooting process included:
 
 This confirmed that the earlier OpenSSH service failure was investigated and that the service was working correctly afterward.
 
+---
+
+## IT Support Troubleshooting Portfolio
+
+In addition to the hands-on Azure Windows Server lab above, this repository contains 20 IT support troubleshooting case studies. These projects demonstrate a structured approach to identifying problems, investigating possible causes, applying appropriate solutions, and documenting results.
+
+**Note:** Projects 01–20 are simulated troubleshooting scenarios created for learning and portfolio purposes. They are not presented as real customer incidents.
+
+### Project Index
+
+| Project | Topic |
+|---|---|
+| Project 01 | RDP Connectivity Troubleshooting |
+| Project 02 | Windows Event Log Troubleshooting |
+| Project 03 | Windows Failed Login Investigation |
+| Project 04 | Microsoft 365 / Entra ID Sign-in Troubleshooting |
+| Project 05 | Intune Device Compliance Troubleshooting |
+| Project 06 | Outlook Email Troubleshooting |
+| Project 07 | Windows DNS and Network Troubleshooting |
+| Project 08 | Windows DHCP and IP Address Troubleshooting |
+| Project 09 | Windows Account Lockout Troubleshooting |
+| Project 10 | Windows Printer Troubleshooting |
+| Project 11 | Windows Software Installation Troubleshooting |
+| Project 12 | Windows Slow Computer Troubleshooting |
+| Project 13 | Microsoft Teams Audio and Video Troubleshooting |
+| Project 14 | OneDrive Sync Troubleshooting |
+| Project 15 | Microsoft Teams Meeting and Calendar Troubleshooting |
+| Project 16 | Microsoft 365 MFA Troubleshooting |
+| Project 17 | Windows VPN Connectivity Troubleshooting |
+| Project 18 | Windows Update Troubleshooting |
+| Project 19 | Windows Blue Screen and Unexpected Restart Troubleshooting |
+| Project 20 | Full Service Desk Incident Simulation |
+
+### Troubleshooting Approach
+
+For each case study, the goal is to follow a structured support workflow:
+
+1. Identify and define the reported problem.
+2. Gather relevant information and check the symptoms.
+3. Investigate likely causes using appropriate tools.
+4. Apply a suitable fix or recommend the next action.
+5. Verify whether the issue has been resolved.
+6. Document the findings and preventive recommendations.
+
+### Skills Demonstrated
+
+- Windows desktop and Windows Server troubleshooting
+- Remote Desktop Protocol (RDP)
+- Microsoft 365 and user sign-in support
+- Identity, authentication, and MFA concepts
+- Basic networking, DNS, DHCP, and VPN troubleshooting
+- Intune device compliance concepts
+- Outlook, Teams, and OneDrive support
+- Windows logs, system maintenance, and incident documentation
+- Service Desk communication and structured problem-solving
+
+### Learning Goals
+
+This portfolio supports my development toward entry-level IT Support, Service Desk, Microsoft 365 Support, and Cloud Support roles. It combines practical lab experience with documented troubleshooting exercises.
+
+
+
