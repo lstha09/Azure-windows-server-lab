@@ -194,6 +194,8 @@ This project documents a structured approach to troubleshooting Azure RDP connec
 
 The exercise also demonstrates security best practices and awareness of Azure costs. The next step is to perform the checks against an available lab VM when this can be done safely within the €0 monthly budget.
 
+**Overall project status:** The Azure RDP troubleshooting procedures and NSG scenarios have been documented as simulations. The original Azure VM is not currently available for live validation. The simulated tickets demonstrate proposed troubleshooting and resolution workflows; they do not represent a verified repair of a live Azure environment.
+
 
 ## 10. Client-Side Connectivity Test Results
 
