@@ -243,6 +243,8 @@ The next stage is to review the simulated Azure-side troubleshooting steps, incl
 
 **Cost:** No Azure resources created; no Azure VM charges incurred for these tests.
 
+**Limitation:** These tests were run against example.com, not an Azure virtual machine. They demonstrate basic client-side connectivity testing only and cannot confirm whether an Azure VM, NSG, Windows Firewall, or RDP service is working.
+
 ## 11. Azure NSG Troubleshooting Simulation
 
 ### Support Ticket AZ-RDP-002
