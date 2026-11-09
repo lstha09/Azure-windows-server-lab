@@ -120,7 +120,6 @@ After the approved installation:
 
 If installation or launch still fails, record the new error and escalate with the evidence gathered.
 
-
 ## 4. Root Cause
 
 **Not independently confirmed.**
