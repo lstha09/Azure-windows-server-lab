@@ -39,6 +39,8 @@ The following evidence was provided for this exercise. It was not collected from
 
 A separate warning indicated that a dependent service had not responded within the expected time. The available evidence did not establish a direct relationship between that warning and the Server service failure.
 
+Evidence limitation: Event ID 7034 generally indicates that a service terminated unexpectedly. The exact service name and event message must be verified from the event details on the affected server. All findings in this table are simulated and were not collected from a live system.
+
 ### 4. Troubleshooting steps
 
 1. **Identify the relevant event.** Selected the System log error because it concerned a service potentially related to file sharing.
@@ -49,6 +51,35 @@ A separate warning indicated that a dependent service had not responded within t
 6. **Plan recovery safely.** Considered service dependencies, operational impact, and authorization before attempting recovery.
 7. **Validate the outcome.** In the simulated final test, the Server service was running and the shared folder was accessible.
 8. **Document the incident.** Recorded the evidence, recovery result, user impact, and remaining uncertainty.
+   
+### 4.1 Example PowerShell checks
+
+The following commands illustrate how an authorized administrator could investigate the Server service on a Windows Server system. They were not executed during this simulation.
+
+**Check the Server service status:**
+
+```powershell
+Get-Service -Name LanmanServer
+```
+
+**Review recent System log events related to service failures:**
+
+```powershell
+Get-WinEvent -FilterHashtable @{
+    LogName = 'System'
+    Id      = 7034, 7031, 7036
+} -MaxEvents 20 |
+    Select-Object TimeCreated, Id, ProviderName, Message
+```
+
+**Check the Server service configuration:**
+
+```powershell
+Get-CimInstance Win32_Service -Filter "Name='LanmanServer'" |
+    Select-Object Name, State, StartMode, ExitCode
+```
+
+**Important:** These are investigation examples, not proof of the cause. Review the output and relevant event details before deciding whether service recovery is appropriate.
 
 ### 5. Root cause assessment
 
@@ -69,6 +100,8 @@ The earlier warning was treated as a lead for investigation, not as confirmed pr
 - Ticket closure: Appropriate after the successful checks and documentation.
 
 The original cause remains unconfirmed, so further investigation may be needed if the problem recurs.
+
+**Validation limitation:** The successful recovery and file-share access described above are simulated outcomes. No live Windows Server service was restarted, and no actual file-share connection was tested.
 
 ### 7. Lessons learned
 
