@@ -45,6 +45,8 @@ The user reports an incorrect-account-or-password message.
 
 In the simulated case, an authorised administrator reports that Conditional Access requires a compliant device, but the user's MacBook is not marked compliant.
 
+**Evidence limitation:** The Conditional Access finding is simulated. In a real Microsoft Entra ID investigation, an authorized administrator should verify the sign-in log, including the failure reason, Conditional Access result, applied policy, and device-compliance information.
+
 **Action:** Follow the approved device-compliance process and check the applicable policy. Do not disable security controls to bypass the restriction.
 
 ### Step 4: Verify access
@@ -55,6 +57,24 @@ After the device-compliance issue is addressed in the simulation:
 
 **Next action:** Gather the exact Teams error and timestamp, investigate any application-specific authentication or client issue, and escalate if necessary. Confirm Teams access before closing the ticket.
 
+## 2.1 Example Microsoft Entra ID investigation checks
+
+The following checks describe how an authorized administrator could investigate a Microsoft 365 sign-in failure. They were not performed against a live tenant during this simulation.
+
+**Check sign-in logs:**
+1. Open the Microsoft Entra admin center.
+2. Navigate to **Identity → Monitoring & health → Sign-in logs**.
+3. Filter by the affected user and approximate sign-in time.
+4. Review the sign-in status, failure reason, Conditional Access tab, and device information.
+
+**Check Conditional Access:**
+1. Open **Protection → Conditional Access → Policies**.
+2. Identify the policy applied to the affected sign-in.
+3. Review the grant controls and device-compliance requirement.
+4. Confirm the policy result in the corresponding sign-in log.
+
+**Important:** Do not change or disable Conditional Access policies simply to restore access. Follow the organization's approved security and device-compliance procedures.
+
 ## 3. Root Cause and Resolution
 
 **Identified issue in the simulation:** The initial sign-in was blocked by a Conditional Access policy because the MacBook did not meet the required device-compliance condition.
@@ -64,6 +84,8 @@ After the device-compliance issue is addressed in the simulation:
 **Outstanding issue:** Teams access remains unverified and requires further investigation.
 
 **Important:** The original incorrect-password message was not independently confirmed as the root cause. This scenario does not establish whether a separate password or authentication issue existed.
+
+**Validation limitation:** Outlook access restoration is a simulated outcome. Teams access remains unverified, and no live Microsoft 365 account, Conditional Access policy, or device-compliance status was changed or tested.
 
 ## 4. Security and Support Best Practices
 
