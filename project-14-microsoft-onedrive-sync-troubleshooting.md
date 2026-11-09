@@ -111,6 +111,39 @@ Document any remaining issues rather than marking the ticket resolved prematurel
 | File syncs but colleagues cannot access it | Sharing or permissions issue | Verify sharing settings and intended recipients |
 | Problem remains unresolved | Cause is still unknown | Document evidence and escalate |
 
+**Evidence limitation:** The synchronization warning, storage availability, file-name error, and persistent "Processing changes" status are fictional examples. In a real investigation, a technician should verify the OneDrive status, exact error message, storage quota, and file synchronization behavior before confirming the cause.
+
+## 4.1 Example Windows PowerShell OneDrive troubleshooting commands
+
+The following commands demonstrate how an authorized support technician could investigate basic OneDrive-related issues. They were not executed during this simulation.
+
+**Check whether the OneDrive process is running:**
+
+```powershell
+Get-Process -Name OneDrive -ErrorAction SilentlyContinue
+```
+
+**Check the OneDrive process details:**
+
+```powershell
+Get-Process -Name OneDrive -ErrorAction SilentlyContinue |
+    Select-Object ProcessName, Id, CPU, WorkingSet
+```
+
+**Check available disk space:**
+
+```powershell
+Get-PSDrive -Name C
+```
+
+**Check the current user's OneDrive environment variables:**
+
+```powershell
+Get-ChildItem Env:OneDrive*
+```
+
+**Important:** These commands are for Windows devices, not macOS. They provide basic diagnostic information but do not confirm cloud synchronization, storage quota, or colleague sharing permissions. Microsoft 365 account and OneDrive administration checks require appropriate authorized tools and permissions. Do not reset OneDrive or delete synchronized files without authorization.
+
 ## 5. Data Protection and Security Considerations
 
 - Verify the user's identity according to company policy before accessing account information.
@@ -143,6 +176,8 @@ Document any remaining issues rather than marking the ticket resolved prematurel
 
 **Escalation:** Required if synchronization or colleague access remains unresolved after approved troubleshooting.
 
+**Validation limitation:** No live OneDrive account or Microsoft 365 tenant was tested. No actual files were renamed, synchronized, deleted, or shared, and no colleague access was verified. The resolution and validation steps are examples for this simulated exercise.
+
 ## 7. Skills Demonstrated
 
 - Microsoft OneDrive synchronization troubleshooting
@@ -162,3 +197,5 @@ This exercise demonstrates a structured approach to OneDrive synchronization pro
 The most important lesson is to protect user data, avoid unnecessary resets or deletions, and verify both synchronization and colleague access before closing a ticket.
 
 **Portfolio note:** This is a simulated troubleshooting exercise, not evidence of a production incident or a real Microsoft 365 tenant change.
+
+**Azure cost and resource safety:** No Azure resources were created, started, or modified for this project. Azure cost remains €0.
