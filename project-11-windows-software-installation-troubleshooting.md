@@ -120,7 +120,6 @@ After the approved installation:
 
 If installation or launch still fails, record the new error and escalate with the evidence gathered.
 
-**Validation limitation:** The successful installation described above is a simulated outcome. No real application was installed, no Windows device was modified, and no live installation logs or application-control policies were reviewed.
 
 ## 4. Root Cause
 
@@ -135,6 +134,8 @@ A real support ticket should distinguish observed symptoms from a verified root 
 In the simulated scenario, IT completed the installation using the approved deployment process.
 
 A real ticket should only be marked resolved after the application has been launched and tested, the employee has confirmed that it works, and the outcome has been documented.
+
+**Validation limitation:** The successful installation described above is a simulated outcome. No real application was installed, no Windows device was modified, and no live installation logs or application-control policies were reviewed.
 
 ## 6. Security and Good Practice
 
