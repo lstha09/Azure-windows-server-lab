@@ -43,23 +43,35 @@ Simulated finding: The laptop has a valid IP address and default gateway, but it
 
 The following commands demonstrate additional checks an authorized support technician can perform on a Windows device. They were not executed during this simulation.
 
-Display the current DNS cache:
+**Display the current DNS cache:**
 
+```cmd
 ipconfig /displaydns
+```
 
-Clear the local DNS cache:
+**Clear the local DNS cache:**
 
+```cmd
 ipconfig /flushdns
+```
 
-Test DNS resolution using a specific DNS server:
+**Test DNS resolution using a specific DNS server:**
 
+```cmd
 nslookup company.example 192.0.2.53
+```
 
-Note: 192.0.2.53 is a documentation-only example address, not a real DNS server.
+Note: `192.0.2.53` is a documentation-only example address, not a real DNS server.
 
-Check the network route:
+**Check the network route:**
 
+```cmd
 tracert company.example
+```
+
+**Important:** Clearing the DNS cache does not correct an incorrect DNS server configuration. Do not change DNS server addresses without authorization and the correct company network settings.
+```
+
 
 Important: Clearing the DNS cache does not correct an incorrect DNS server configuration. Do not change DNS server addresses without authorization and the correct company network settings.
 
