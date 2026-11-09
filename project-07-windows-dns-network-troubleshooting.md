@@ -72,9 +72,6 @@ tracert company.example
 **Important:** Clearing the DNS cache does not correct an incorrect DNS server configuration. Do not change DNS server addresses without authorization and the correct company network settings.
 ```
 
-
-Important: Clearing the DNS cache does not correct an incorrect DNS server configuration. Do not change DNS server addresses without authorization and the correct company network settings.
-
 ## 4. Root Cause
 
 In this simulated case, the network team confirms that the laptop is using an incorrect DNS server configuration.
