@@ -56,6 +56,44 @@ Using authorized troubleshooting tools, check whether the service is running. If
 
 Do not make service changes without appropriate authorization.
 
+## 3.1 Example PowerShell printer troubleshooting commands
+
+The following commands demonstrate how an authorized support technician could investigate printer issues on a Windows device. They were not executed during this simulation.
+
+**List installed printers:**
+
+```powershell
+Get-Printer
+```
+
+**Check the Print Spooler service:**
+
+```powershell
+Get-Service -Name Spooler
+```
+
+**Check the printer queue and job status:**
+
+```powershell
+Get-PrintJob -PrinterName "Office Printer"
+```
+
+Note: Replace `"Office Printer"` with the actual printer name.
+
+**Check installed printer drivers:**
+
+```powershell
+Get-PrinterDriver
+```
+
+**Check printer port configuration:**
+
+```powershell
+Get-PrinterPort
+```
+
+**Important:** These commands are for Windows devices, not macOS. They are examples for investigation and do not automatically fix printing problems. Restarting the Print Spooler or changing printer settings requires appropriate authorization and may affect other users.
+
 ### Step 4 — Verify the printer configuration
 
 If the queue is clear and the service is running, check:
@@ -65,6 +103,8 @@ If the queue is clear and the service is running, check:
 - Whether the settings match the organization's approved configuration.
 
 Avoid reinstalling drivers or changing ports until you have gathered sufficient evidence.
+
+**Evidence limitation:** The symptoms and possible causes are fictional examples. In a real investigation, an authorized technician should review the printer queue, Print Spooler service status, driver details, printer port, and relevant error messages before identifying the root cause.
 
 ### Step 5 — Test the result
 
@@ -92,6 +132,8 @@ In a real support case, the ticket would remain open or be escalated until:
 - An approved corrective action was completed.
 - A successful test print was verified.
 - The user confirmed that the service was restored.
+
+  **Validation limitation:** No live printer was accessed, no print job was cleared, no Print Spooler service was restarted, and no test document was printed during this simulation. The resolution and validation steps describe the procedure that would be followed in a real support case.
 
 ## 6. Security and Good Practice
 
