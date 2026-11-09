@@ -174,6 +174,49 @@ This does not establish that the underlying issue is permanently resolved.
 
 These are illustrative scenario details, not actual diagnostic results.
 
+**Evidence limitation:** The two unexpected restarts, Reliability Monitor findings, reported driver update, and initial stability observations are fictional examples. In a real investigation, a technician should verify the stop code, relevant event logs, driver history, system-file check results, and any available crash-dump information before confirming the cause or resolution.
+
+## 4.1 Example Windows PowerShell diagnostic commands
+
+The following commands demonstrate how an authorized support technician could investigate Windows blue-screen and unexpected-restart issues. They were not executed during this simulation.
+
+**Check recent unexpected shutdown events:**
+
+```powershell
+Get-WinEvent -FilterHashtable @{
+    LogName = 'System'
+    Id = 41, 6008
+} -MaxEvents 20 -ErrorAction SilentlyContinue |
+    Select-Object TimeCreated, Id, ProviderName, Message
+```
+
+**Check recent Windows system errors:**
+
+```powershell
+Get-WinEvent -FilterHashtable @{
+    LogName = 'System'
+    Level = 1, 2
+} -MaxEvents 20 -ErrorAction SilentlyContinue |
+    Select-Object TimeCreated, Id, ProviderName, Message
+```
+
+**Check Windows version:**
+
+```powershell
+Get-ComputerInfo |
+    Select-Object WindowsProductName, WindowsVersion, OsBuildNumber
+```
+
+**Check recent system updates:**
+
+```powershell
+Get-HotFix |
+    Sort-Object InstalledOn -Descending |
+    Select-Object -First 10 HotFixID, Description, InstalledOn
+```
+
+**Important:** These commands are for Windows devices, not macOS. They collect basic diagnostic information but do not identify the exact cause of a blue screen. Event ID 41 and Event ID 6008 indicate unexpected shutdowns but do not independently prove a hardware or driver failure. Empty results do not rule out a problem. Review logs carefully because event messages may contain sensitive information. Obtain authorization before making system changes or running repair commands.
+
 ## 5. Root Cause and Resolution
 
 **Confirmed root cause:** Not established in this simulated case.
@@ -189,6 +232,8 @@ A professional incident report should distinguish between:
 - **Actions taken:** What the technician actually performed.
 - **Root cause:** The explanation supported by sufficient evidence.
 - **Resolution status:** Whether the service has been restored and whether further monitoring is required.
+
+**Validation limitation:** No real Windows computer was tested or updated. No actual driver was installed, removed, or rolled back, and no system repair command was executed. The normal startup and initial stability described in this project are simulated outcomes. No real crash logs or dump files were analyzed.
 
 ## 6. Escalation Guidelines
 
@@ -239,6 +284,8 @@ This project is a simulated learning exercise.
 - No system repair command was executed on a real device.
 - No Azure resources were created, started, or modified.
 - All findings and outcomes are illustrative.
+
+**Azure cost and resource safety:** No Azure resources were created, started, or modified for this project. Azure cost remains €0.
 
 ## Conclusion
 
