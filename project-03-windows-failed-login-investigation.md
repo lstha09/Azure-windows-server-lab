@@ -49,6 +49,8 @@ The fictional events used the same source IP address, `192.0.2.45`, and the same
 
 The address belongs to a range reserved for documentation and examples. It is not evidence of an actual user's location.
 
+**Evidence limitation:** The event records and their details are fictional examples created for this training exercise. In a real investigation, the analyst should verify the complete event details directly in Windows Security logs, including the account, logon type, source address, timestamp, and authentication status codes.
+
 ### Relevant Windows Event IDs
 
 - **4625 — Failed logon:** Records an unsuccessful sign-in attempt.
@@ -109,6 +111,42 @@ Record the relevant event IDs, timestamps, account details, observations, user s
 
 Keep the ticket factual and avoid describing a suspected compromise as confirmed until the evidence supports that conclusion.
 
+### 5.1 Example PowerShell investigation commands
+
+The following commands demonstrate how an authorized administrator could review Windows Security events. They were not executed against a live server during this simulation.
+
+**Find recent failed logon events (4625):**
+
+```powershell
+Get-WinEvent -FilterHashtable @{
+    LogName = 'Security'
+    Id      = 4625
+} -MaxEvents 20 |
+    Select-Object TimeCreated, Id, ProviderName, Message
+```
+
+**Find recent successful logon events (4624):**
+
+```powershell
+Get-WinEvent -FilterHashtable @{
+    LogName = 'Security'
+    Id      = 4624
+} -MaxEvents 20 |
+    Select-Object TimeCreated, Id, ProviderName, Message
+```
+
+**Find recent account lockout events (4740):**
+
+```powershell
+Get-WinEvent -FilterHashtable @{
+    LogName = 'Security'
+    Id      = 4740
+} -MaxEvents 20 |
+    Select-Object TimeCreated, Id, ProviderName, Message
+```
+
+**Important:** Access to the Security log may require administrator privileges or appropriate event-log permissions. These commands retrieve event records; they do not independently confirm whether an account has been compromised.
+
 ## 6. Resolution and Final Status
 
 **Simulated outcome:** The case was escalated to the security team, which acknowledged receipt and continued its investigation.
@@ -116,6 +154,8 @@ Keep the ticket factual and avoid describing a suspected compromise as confirmed
 The exercise did not establish a confirmed root cause or prove that the account had been compromised.
 
 The appropriate support outcome is to document the escalation and follow the organization's ticket-handling procedure. The ticket should not be marked as a confirmed security resolution while the investigation remains open.
+
+**Validation limitation:** The escalation and acknowledgement described above are simulated outcomes. No real security team was contacted, and no live account or security incident was investigated.
 
 ## 7. Security and Operational Best Practices
 
