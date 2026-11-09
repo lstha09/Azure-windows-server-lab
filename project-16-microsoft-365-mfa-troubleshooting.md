@@ -119,6 +119,39 @@ Verify that:
 | User signs in after recovery | Access has been restored | Verify MFA and document the result |
 | The issue persists after recovery | Unresolved authentication or security issue | Escalate with evidence to the appropriate support team |
 
+**Evidence limitation:** The missing notifications, registered authentication methods, unexpected MFA requests, and successful sign-in are fictional examples. In a real investigation, a technician must verify the authentication details and sign-in activity using authorized Microsoft 365 identity tools before confirming the cause or resolution.
+
+## 4.1 Example Windows PowerShell authentication troubleshooting commands
+
+The following commands demonstrate basic Windows diagnostic checks that an authorized support technician could perform. They were not executed during this simulation.
+
+**Check the Windows date and time:**
+
+```powershell
+Get-Date
+```
+
+**Check the configured time zone:**
+
+```powershell
+Get-TimeZone
+```
+
+**Check whether Microsoft Authenticator-related browser or Teams processes are running:**
+
+```powershell
+Get-Process -Name ms-teams -ErrorAction SilentlyContinue
+```
+
+**Check the Windows version:**
+
+```powershell
+Get-ComputerInfo |
+    Select-Object WindowsProductName, WindowsVersion, OsBuildNumber
+```
+
+**Important:** These commands are for Windows devices, not macOS. They provide basic device information but cannot inspect Microsoft Authenticator registrations, MFA approval requests, Entra ID sign-in logs, or Conditional Access policies. Those checks require authorized Microsoft 365 or Microsoft Entra administration tools and permissions. Never use scripts to bypass MFA or weaken authentication security.
+
 ## 5. Example Support Ticket Notes
 
 **Ticket ID:** MFA-001
@@ -142,6 +175,8 @@ Verify that:
 **Root cause:** Not independently confirmed.
 
 **Follow-up:** Complete any remaining security investigation or monitoring required by organizational policy.
+
+**Validation limitation:** No live Microsoft 365 account, Microsoft Authenticator app, or Entra ID tenant was tested. No authentication method was changed, no MFA request was investigated in real sign-in logs, and no actual account recovery was performed. The successful sign-in and security review are simulated outcomes.
 
 ## 6. Security and Privacy Best Practices
 
@@ -174,3 +209,5 @@ A missing notification may be caused by a device, application, notification, or 
 A good Service Desk technician protects the account, follows approved recovery procedures, verifies successful sign-in, and documents the work without collecting sensitive authentication information.
 
 **Portfolio note:** This project is a simulated learning exercise, not evidence of a production incident or a real Microsoft 365 tenant change.
+
+> **Important:** This is a simulated support case. No real account was accessed or changed. No Azure resources were created, started, or modified. Azure cost: €0.
