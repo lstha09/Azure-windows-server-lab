@@ -133,7 +133,7 @@ In a real support case, the ticket would remain open or be escalated until:
 - A successful test print was verified.
 - The user confirmed that the service was restored.
 
-  **Validation limitation:** No live printer was accessed, no print job was cleared, no Print Spooler service was restarted, and no test document was printed during this simulation. The resolution and validation steps describe the procedure that would be followed in a real support case.
+**Validation limitation:** No live printer was accessed, no print job was cleared, no Print Spooler service was restarted, and no test document was printed during this simulation. The resolution and validation steps describe the procedure that would be followed in a real support case.
 
 ## 6. Security and Good Practice
 
