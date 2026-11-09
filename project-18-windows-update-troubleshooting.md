@@ -155,7 +155,44 @@ A successful download alone does not prove that an update has been fully install
 | Centralized management | Company-managed update process | Check deployment status and policies |
 | Final validation | Update installs successfully | Verify status and user operation |
 
+**Evidence limitation:** The 500 MB disk-space figure, Windows Update troubleshooter findings, centralized update-management status, and successful installation are fictional examples. In a real investigation, a technician should verify available disk space, the exact update error, relevant event logs, and deployment status using authorized diagnostic tools before confirming the cause or resolution.
+
 All observations in this table are fictional and intended to demonstrate a troubleshooting workflow.
+
+## 4.1 Example Windows PowerShell update troubleshooting commands
+
+The following commands demonstrate how an authorized support technician could investigate Windows Update issues. They were not executed during this simulation.
+
+**Check available disk space:**
+
+```powershell
+Get-PSDrive -Name C |
+    Select-Object Name, Used, Free
+```
+
+**Check Windows Update and Background Intelligent Transfer services:**
+
+```powershell
+Get-Service -Name wuauserv, bits |
+    Select-Object Name, Status, StartType
+```
+
+**List recently installed updates:**
+
+```powershell
+Get-HotFix |
+    Sort-Object InstalledOn -Descending |
+    Select-Object -First 10 HotFixID, Description, InstalledOn
+```
+
+**Review recent Windows Update operational events:**
+
+```powershell
+Get-WinEvent -LogName 'Microsoft-Windows-WindowsUpdateClient/Operational' -MaxEvents 30 -ErrorAction SilentlyContinue |
+    Select-Object TimeCreated, Id, LevelDisplayName, Message
+```
+
+**Important:** These commands are for Windows devices, not macOS. They provide diagnostic information but do not automatically repair Windows Update. A stopped BITS service does not necessarily indicate a problem. An empty event-log result does not prove that Windows Update is working correctly. Review the results and obtain authorization before stopping services, clearing update caches, deleting files, or changing system settings. Event logs may contain sensitive information.
 
 ## 5. Root Cause and Resolution
 
@@ -166,6 +203,8 @@ All observations in this table are fictional and intended to demonstrate a troub
 Several potential factors can contribute to Windows Update failures, including insufficient disk space, corrupted update components, policy restrictions, or update deployment problems. The observations in this exercise do not establish which factor was the definitive cause.
 
 In a real ticket, document only the cause supported by the available evidence.
+
+**Validation limitation:** No real Windows computer was tested or updated. No disk cleanup, troubleshooter repair, update-service change, or installation was performed. The successful update installation and final validation described in this project are simulated outcomes.
 
 ## 6. Escalation Guidelines
 
@@ -214,8 +253,12 @@ This is a simulated learning project.
 - Commands are provided as examples and have not been executed against a real environment.
 - All observations and outcomes are illustrative.
 
+**Azure cost and resource safety:** No Azure resources were created, started, or modified for this project. Azure cost remains €0.
+
 ## Conclusion
 
 This project demonstrates a structured approach to Windows Update troubleshooting, from gathering the initial error details and checking disk space to reviewing diagnostics, respecting centralized management policies, validating the installation, and documenting the incident.
 
 These skills are relevant to entry-level IT Support Specialist and Service Desk roles.
+
+
