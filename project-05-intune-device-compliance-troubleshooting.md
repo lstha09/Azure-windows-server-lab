@@ -48,6 +48,8 @@ The simulated compliance details show that the device does not meet the minimum 
 
 **Action:** Follow the approved Windows update process. Do not bypass compliance requirements without appropriate authorisation.
 
+**Evidence limitation:** The real-time protection and Windows version findings are simulated. In a real Intune investigation, an authorized administrator should review the device's compliance details, applicable compliance policy, last check-in time, and reported failure reasons before deciding on corrective action.
+
 ### Step 5: Verify the result
 
 In the simulation:
@@ -55,6 +57,33 @@ In the simulation:
 - The device syncs with Intune again.
 - The compliance status changes to Compliant.
 - The user confirms that company resources are accessible again.
+
+  ## 2.1 Example Microsoft Intune investigation checks
+
+The following steps demonstrate how an authorized support technician could investigate a non-compliant device. They were not performed against a live Intune tenant during this simulation.
+
+**Review device compliance:**
+1. Open the Microsoft Intune admin center.
+2. Navigate to **Devices → All devices**.
+3. Find the affected device.
+4. Review its compliance status and last check-in time.
+5. Open the device's compliance details and identify the failing requirement.
+
+**Check Windows security status:**
+1. On an authorized Windows device, open Windows Security.
+2. Select **Virus & threat protection**.
+3. Review the real-time protection status.
+4. Follow approved procedures if protection is disabled.
+
+**Check Windows version:**
+
+Run this command on an authorized Windows device:
+
+```powershell
+Get-ComputerInfo | Select-Object WindowsProductName, WindowsVersion, OsBuildNumber
+```
+
+**Important:** A device sync requests updated communication with Intune, but it does not automatically fix a failing compliance requirement. Verify the reported compliance result after synchronization.
 
 ## 3. Root Cause and Resolution
 
@@ -65,6 +94,8 @@ In the simulation:
 **Resolution:** Restore real-time protection, update Windows through the approved process, sync the device, and verify compliance and access.
 
 **Ticket status:** Resolved in simulation after the user confirmed access was restored.
+
+**Validation limitation:** The compliance restoration and successful access described above are simulated outcomes. No live Windows device was updated, no Intune synchronization was performed, and no actual company resource access was tested.
 
 ## 4. Security and Support Best Practices
 
