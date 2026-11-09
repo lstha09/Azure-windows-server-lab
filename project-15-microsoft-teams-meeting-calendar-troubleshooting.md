@@ -124,6 +124,39 @@ A visible meeting entry alone is not sufficient evidence that the user can join 
 | Meeting is missing in both Teams clients | Possible account, calendar, or service issue | Gather evidence and escalate |
 | User needs to join immediately | Time-sensitive access problem | Verify the original invitation and an approved access route |
 
+**Evidence limitation:** The account verification, Outlook meeting visibility, Teams restart results, and service-health findings are fictional examples. In a real investigation, a technician should verify the account, calendar, meeting details, client behavior, and Microsoft 365 service status before confirming the cause.
+
+## 6.1 Example Windows PowerShell calendar troubleshooting commands
+
+The following commands demonstrate basic Windows and Outlook-related checks that an authorized support technician could perform. They were not executed during this simulation.
+
+**Check the Windows date and time:**
+
+```powershell
+Get-Date
+```
+
+**Check the configured time zone:**
+
+```powershell
+Get-TimeZone
+```
+
+**Check whether the Teams process is running:**
+
+```powershell
+Get-Process -Name ms-teams -ErrorAction SilentlyContinue
+```
+
+**Check the Windows version:**
+
+```powershell
+Get-ComputerInfo |
+    Select-Object WindowsProductName, WindowsVersion, OsBuildNumber
+```
+
+**Important:** These commands are for Windows devices, not macOS. They provide basic diagnostic information but do not verify Outlook calendar synchronization, Teams calendar contents, or Microsoft 365 service health. Those checks require appropriate Microsoft 365 applications, administration tools, and permissions. Do not modify account or calendar settings without authorization.
+
 ## 7. Example Support Ticket Notes
 
 **Ticket ID:** TEAMS-002
@@ -144,6 +177,8 @@ A visible meeting entry alone is not sufficient evidence that the user can join 
 **Root cause:** Not independently confirmed.
 
 **Escalation:** Required if the calendar issue remains unresolved after approved troubleshooting.
+
+**Validation limitation:** No live Teams or Outlook account, mailbox, or calendar was tested. No meeting invitation was modified, no Teams client was restarted on a real device, and no user actually joined a test meeting. All outcomes and checks are simulated examples.
 
 ## 8. Skills Demonstrated
 
