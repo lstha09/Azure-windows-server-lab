@@ -61,6 +61,42 @@ If space is insufficient:
 
 Never delete random files from Windows system folders.
 
+## 3.1 Example PowerShell software installation troubleshooting commands
+
+The following commands demonstrate how an authorized support technician could investigate software installation issues on a Windows device. They were not executed during this simulation.
+
+**Check available disk space:**
+
+```powershell
+Get-PSDrive -Name C
+```
+
+**Display Windows operating system information:**
+
+```powershell
+Get-ComputerInfo | Select-Object WindowsProductName, WindowsVersion, OsBuildNumber
+```
+
+**Find recently installed applications (registry-based example):**
+
+```powershell
+Get-ItemProperty `
+    HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*, `
+    HKLM:\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* |
+    Select-Object DisplayName, DisplayVersion, InstallDate
+```
+
+Note: Some applications may not appear in these registry locations. This command is an investigation example, not a complete inventory of installed software.
+
+**Check recent application-related events:**
+
+```powershell
+Get-WinEvent -LogName Application -MaxEvents 20 |
+    Select-Object TimeCreated, Id, LevelDisplayName, ProviderName, Message
+```
+
+**Important:** These commands are for Windows devices, not macOS. They help gather information but do not bypass application-control policies, grant administrator permissions, or install software. Review results and follow organizational procedures.
+
 ### Step 4 — Investigate permissions
 
 If the error indicates insufficient permissions:
@@ -70,6 +106,8 @@ If the error indicates insufficient permissions:
 - Request IT deployment if the application must be installed by an administrator.
 
 Do not grant permanent local administrator rights solely to install one application.
+
+**Evidence limitation:** The application-block message, disk-space issue, and permissions findings are fictional examples. In a real investigation, an authorized technician should verify the exact error, available disk space, applicable application-control policies, and installation logs before confirming the cause.
 
 ### Step 5 — Validate the installation
 
@@ -81,6 +119,8 @@ After the approved installation:
 5. Document the result and close the ticket only when the issue is resolved.
 
 If installation or launch still fails, record the new error and escalate with the evidence gathered.
+
+**Validation limitation:** The successful installation described above is a simulated outcome. No real application was installed, no Windows device was modified, and no live installation logs or application-control policies were reviewed.
 
 ## 4. Root Cause
 
