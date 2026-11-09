@@ -7,6 +7,16 @@ This project demonstrates a hands-on Microsoft Azure Windows Server lab created 
 
 The goal was to deploy a Windows Server virtual machine in Azure, connect to it remotely, configure local users, troubleshoot Remote Desktop access, configure Windows Firewall, create a shared folder, and test user permissions.
 
+## Current Azure Resource Status
+
+The original Azure Windows Server lab was completed as a hands-on learning exercise. The virtual machine and its associated disk were subsequently deleted to avoid ongoing costs.
+
+The lab documentation describes work completed during that earlier exercise. The virtual machine is not currently running.
+
+The 20 IT Support troubleshooting case studies in this repository are simulated exercises and do not require Azure resources.
+
+**Azure cost for the simulated portfolio projects: €0.**
+
 ## Technologies Used
 
 - Microsoft Azure
