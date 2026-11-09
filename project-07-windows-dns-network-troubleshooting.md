@@ -39,17 +39,45 @@ Purpose: Displays the IP address, default gateway, DNS server addresses, and oth
 
 Simulated finding: The laptop has a valid IP address and default gateway, but its DNS server configuration is unexpected.
 
+## 3.1 Additional DNS troubleshooting commands
+
+The following commands demonstrate additional checks an authorized support technician can perform on a Windows device. They were not executed during this simulation.
+
+Display the current DNS cache:
+
+ipconfig /displaydns
+
+Clear the local DNS cache:
+
+ipconfig /flushdns
+
+Test DNS resolution using a specific DNS server:
+
+nslookup company.example 192.0.2.53
+
+Note: 192.0.2.53 is a documentation-only example address, not a real DNS server.
+
+Check the network route:
+
+tracert company.example
+
+Important: Clearing the DNS cache does not correct an incorrect DNS server configuration. Do not change DNS server addresses without authorization and the correct company network settings.
+
 ## 4. Root Cause
 
 In this simulated case, the network team confirms that the laptop is using an incorrect DNS server configuration.
 
 No real device or company network was investigated.
 
+**Evidence limitation:** The incorrect DNS server configuration is a simulated finding. In a real investigation, verify the configured DNS server addresses and compare them with the organization's approved network settings before identifying the root cause.
+
 ## 5. Resolution
 
 The authorized support team corrects the DNS configuration using the approved company network settings.
 
 The DNS lookup is repeated to verify that the hostname resolves successfully.
+
+**Validation limitation:** The successful DNS resolution and website access are simulated outcomes. No live DNS configuration was changed, no real DNS server was queried, and no company website was tested.
 
 ## 6. Validation
 
