@@ -115,11 +115,47 @@ The result represents the fictional outcome of this exercise, not a real-world t
 
 Use only authorized tools and approved procedures on company devices.
 
+## 4.1 Example PowerShell performance troubleshooting commands
+
+The following commands demonstrate how an authorized support technician could investigate Windows performance issues. They were not executed during this simulation.
+
+**Check CPU and memory usage by process:**
+
+```powershell
+Get-Process |
+    Sort-Object CPU -Descending |
+    Select-Object -First 10 ProcessName, CPU, WorkingSet
+```
+
+**Check available memory:**
+
+```powershell
+Get-CimInstance Win32_OperatingSystem |
+    Select-Object TotalVisibleMemorySize, FreePhysicalMemory
+```
+
+**Check available disk space:**
+
+```powershell
+Get-PSDrive -Name C
+```
+
+**List applications configured to start automatically:**
+
+```powershell
+Get-CimInstance Win32_StartupCommand |
+    Select-Object Name, Command, Location, User
+```
+
+**Important:** These commands are for Windows devices, not macOS. They gather diagnostic information but do not automatically improve performance. Review the results before making changes, and obtain authorization before disabling startup applications or changing system settings.
+
 ## 5. Root Cause and Limitations
 
 **Simulated findings:** High memory usage, numerous browser tabs, and a non-essential startup application were identified as possible contributors.
 
 **Root cause:** Not independently confirmed. The exercise demonstrates troubleshooting and validation rather than proving that one specific factor caused the slowdown.
+
+**Evidence limitation:** The CPU, memory, and disk usage figures, browser activity, and startup application findings are fictional examples. In a real investigation, an authorized technician should verify resource usage in Task Manager or Resource Monitor and identify the processes responsible before confirming the cause.
 
 ## 6. Ticket Closure Notes
 
@@ -133,6 +169,8 @@ Use only authorized tools and approved procedures on company devices.
 - Documented the troubleshooting steps and outcome.
 
 If performance had remained poor, the next steps would include collecting further evidence, checking available storage and system errors, and escalating to the appropriate IT team when necessary.
+
+**Validation limitation:** The normal responsiveness described above is a simulated outcome. No live Windows computer was tested, no startup application was disabled, no browser tabs were closed, and no real performance measurements were collected.
 
 ## 7. Security and Professional Practice
 
