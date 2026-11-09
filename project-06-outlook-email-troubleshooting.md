@@ -50,6 +50,8 @@ The user reports that Outlook on the web can send and receive emails successfull
 
 **Action:** Focus troubleshooting on the desktop Outlook client. Record the Outlook version and error details, restart Outlook, and follow approved troubleshooting procedures or escalate if necessary.
 
+**Evidence limitation:** The desktop-client-specific finding is based on simulated test results. In a real investigation, an authorized technician should verify Outlook connection status, application version, relevant error messages, and Microsoft 365 service health before identifying the cause.
+
 ### Step 5: Verify the resolution
 
 In the simulation, further approved troubleshooting restores the desktop application's ability to connect.
@@ -59,6 +61,30 @@ The user confirms that:
 - New emails can be received.
 - Outlook desktop is functioning normally again.
 
+  ## 2.1 Example Outlook investigation checks
+
+The following checks demonstrate how an authorized support technician could investigate an Outlook desktop issue. They were not performed against a live Microsoft 365 environment during this simulation.
+
+**Check Outlook connection status:**
+1. Open Outlook desktop.
+2. Check whether Outlook displays Working Offline or Disconnected.
+3. Verify that the device has a working internet connection.
+4. If appropriate, turn off Work Offline and check whether Outlook reconnects.
+
+**Compare with Outlook on the web:**
+1. Sign in to Outlook on the web using the user's authorized account.
+2. Send a short test email.
+3. Check whether new messages arrive.
+4. Compare the results with Outlook desktop.
+
+**Check Microsoft 365 service health (administrator access):**
+1. Open the Microsoft 365 admin center.
+2. Navigate to **Health → Service health**.
+3. Review any Exchange Online or Outlook-related service incidents.
+4. Record relevant incidents and follow the organization's support procedures.
+
+**Important:** Successful Outlook on the web access does not prove that every Exchange Online service is functioning normally. Check the available evidence before deciding whether to repair the desktop application or escalate the issue.
+
 ## 3. Root Cause and Resolution
 
 **Resolution:** The desktop Outlook application was restored in the simulated case, and successful sending and receiving were verified.
@@ -66,6 +92,8 @@ The user confirms that:
 **Root cause:** The exact underlying cause was not established in the scenario. The evidence indicated a desktop-client-specific issue because Outlook on the web worked.
 
 **Ticket status:** Resolved in simulation after successful tests and user confirmation.
+
+**Validation limitation:** The successful restoration of Outlook desktop is a simulated outcome. No live Outlook application was repaired, no Microsoft 365 mailbox was tested, and no actual Exchange Online service was modified.
 
 ## 4. Support Best Practices
 
