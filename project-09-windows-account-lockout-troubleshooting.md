@@ -26,6 +26,8 @@ In this simulated case, the administrator confirms that the account is locked.
 
 The user reports that they recently changed their password and may have an old password saved on another device.
 
+**Evidence limitation:** The account lockout and outdated saved credentials are simulated findings. In a real investigation, an authorized administrator should review the relevant authentication logs, lockout events, timestamps, and affected devices before confirming the cause.
+
 ## 4. Troubleshooting and Resolution
 
 The authorized support technician:
@@ -34,6 +36,36 @@ The authorized support technician:
 3. Identifies outdated saved credentials on another device in the simulated scenario.
 4. Ensures the outdated credentials are corrected through the approved process.
 5. Asks the user to sign in using their own credentials.
+
+## 4.1 Example Windows account lockout investigation commands
+
+The following PowerShell commands demonstrate how an authorized administrator could investigate account lockout events. They were not executed against a live system during this simulation.
+
+**Check recent account lockout events (Event ID 4740):**
+
+```powershell
+Get-WinEvent -FilterHashtable @{
+    LogName = 'Security'
+    Id      = 4740
+} -MaxEvents 20 |
+    Select-Object TimeCreated, Id, Message
+```
+
+**Check recent failed sign-in events (Event ID 4625):**
+
+```powershell
+Get-WinEvent -FilterHashtable @{
+    LogName = 'Security'
+    Id      = 4625
+} -MaxEvents 20 |
+    Select-Object TimeCreated, Id, Message
+```
+
+**Important:** These commands require appropriate permissions to read the Security log. Event 4740 can help identify the computer that triggered an account lockout. Review the complete event details before taking action.
+
+Do not unlock accounts or reset passwords without following the organization's identity-verification and authorization procedures.
+
+**Validation limitation:** The account unlocking and successful sign-in described above are simulated outcomes. No real account was unlocked, no saved credentials were changed, and no live authentication logs were reviewed.
 
 ## 5. Validation
 
