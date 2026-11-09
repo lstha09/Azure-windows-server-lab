@@ -103,6 +103,34 @@ Do not record passwords, MFA codes, or unnecessary sensitive information.
 
 **Simulated finding:** Access is restored, but the precise cause of the unexpected MFA requests remains unconfirmed. The security incident must remain tracked according to organizational policy.
 
+**Evidence limitation:** The sign-in failures, unexpected MFA requests, security-team involvement, account-recovery actions, and successful Outlook and Teams access are fictional examples. In a real investigation, a technician should verify identity, review authorized sign-in evidence, confirm approved recovery actions, and obtain user confirmation before documenting the actual findings and resolution.
+
+## 3.1 Example PowerShell diagnostic commands
+
+The following commands demonstrate basic Windows-side checks that an authorized support technician could use during an investigation. They were not executed during this simulation.
+
+**Check the current date and time:**
+
+```powershell
+Get-Date
+```
+
+**Check the Windows version:**
+
+```powershell
+Get-ComputerInfo |
+    Select-Object WindowsProductName, WindowsVersion, OsBuildNumber
+```
+
+**Check whether Outlook and Teams processes are running:**
+
+```powershell
+Get-Process -Name OUTLOOK, ms-teams -ErrorAction SilentlyContinue |
+    Select-Object ProcessName, Id, StartTime
+```
+
+**Important:** These commands are for Windows devices, not macOS. They provide basic device information but cannot verify Microsoft 365 sign-in success, MFA registration, authentication requests, Conditional Access results, or account compromise. Those checks require appropriate authorized Microsoft 365 and Microsoft Entra tools and permissions. Do not attempt to bypass MFA or change account-security settings without authorization.
+
 ## 4. Example Troubleshooting Decision Flow
 
 1. **Microsoft 365 sign-in fails:** Gather error messages and assess business impact.
@@ -135,6 +163,8 @@ Do not record passwords, MFA codes, or unnecessary sensitive information.
 
 **Closure decision:** The Service Desk access ticket may be resolved according to local procedure once the user confirms functionality and required documentation is complete. The related security incident must continue to be tracked separately if the investigation is still open.
 
+**Validation limitation:** No live Microsoft 365 account, Outlook mailbox, Teams client, Microsoft Authenticator app, or Entra ID tenant was tested. No password was reset, session was revoked, authentication method was changed, or sign-in log was reviewed. The successful sign-in and service restoration described in this project are simulated outcomes.
+
 ## 7. Skills Demonstrated
 
 - Service Desk incident prioritization.
@@ -151,3 +181,5 @@ Do not record passwords, MFA codes, or unnecessary sensitive information.
 This project is a simulated portfolio exercise intended to demonstrate entry-level IT support and security-aware troubleshooting. It does not document a real Microsoft 365 incident, and its simulated results should not be presented as real-world operational experience.
 
 No real account was accessed or changed. No Azure resources were created, started, or modified.
+
+**Azure cost and resource safety:** No Azure resources were created, started, or modified for this project. Azure cost remains €0.
