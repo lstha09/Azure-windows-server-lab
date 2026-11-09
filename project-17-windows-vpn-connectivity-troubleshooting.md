@@ -135,6 +135,38 @@ A technician should validate that:
 
 The exact underlying root cause is **not independently confirmed** in this exercise. The scenario illustrates a troubleshooting sequence, not evidence of a real diagnosis.
 
+**Validation limitation:** No real Windows computer, VPN client, company network, or internal file server was tested. No actual authentication attempt, VPN connection, DNS query, or network configuration change was performed. The successful connection and file-server access described in this project are simulated outcomes.
+
+### Step 6: Additional Windows PowerShell Diagnostic Commands
+
+The following commands demonstrate basic network checks that an authorized Windows support technician could perform. They were not executed during this simulation.
+
+**Check the network adapter configuration:**
+
+```powershell
+Get-NetIPConfiguration
+```
+
+**Check DNS name resolution:**
+
+```powershell
+Resolve-DnsName fileserver.company.example
+```
+
+**Test connectivity to the internal file server:**
+
+```powershell
+Test-NetConnection fileserver.company.example -Port 445
+```
+
+**Check the configured network routes:**
+
+```powershell
+Get-NetRoute -AddressFamily IPv4
+```
+
+**Important:** These commands are for Windows devices, not macOS. Replace the example hostname with the organization's approved internal hostname. Port 445 is commonly used for SMB file sharing, but the test must match the actual environment. A failed test does not automatically prove a firewall problem. Review the results before making changes, and obtain authorization before modifying network settings.
+
 ## 4. Simulated Findings
 
 | Area | Simulated observation | Next action |
@@ -146,6 +178,8 @@ The exact underlying root cause is **not independently confirmed** in this exerc
 | Final validation | User confirms VPN and file-server access | Document the outcome |
 
 These observations are fictional scenario details, not actual diagnostic results.
+
+**Evidence limitation:** The authentication errors, VPN server connectivity failures, internal DNS findings, and successful file-server access are fictional examples. In a real investigation, a technician should verify the VPN client logs, authentication results, network connectivity, DNS responses, routing information, and resource permissions before confirming the cause or resolution.
 
 ## 5. Root Cause and Resolution
 
