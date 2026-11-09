@@ -39,7 +39,7 @@ The following evidence was provided for this exercise. It was not collected from
 
 A separate warning indicated that a dependent service had not responded within the expected time. The available evidence did not establish a direct relationship between that warning and the Server service failure.
 
-Evidence limitation: Event ID 7034 generally indicates that a service terminated unexpectedly. The exact service name and event message must be verified from the event details on the affected server. All findings in this table are simulated and were not collected from a live system.
+**Evidence limitation:** Event ID 7034 generally indicates that a service terminated unexpectedly. The exact service name and event message must be verified from the event details on the affected server. All findings in this table are simulated and were not collected from a live system.
 
 ### 4. Troubleshooting steps
 
@@ -95,7 +95,7 @@ The earlier warning was treated as a lead for investigation, not as confirmed pr
 
 - Server service: Running.
 - Shared folder access: Successful.
-- New errors during validation: None observed.
+- New errors during simulated validation: None reported in the exercise.
 - User communication: Notify the user that access has been restored.
 - Ticket closure: Appropriate after the successful checks and documentation.
 
