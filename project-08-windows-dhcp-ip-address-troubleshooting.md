@@ -56,11 +56,45 @@ Requests a new IP configuration from the DHCP server.
 
 Note: These commands are documented for learning purposes. They were not run against a real company device.
 
+## 3.1 Additional DHCP troubleshooting commands
+
+The following commands demonstrate additional checks an authorized support technician can perform on a Windows device. They were not executed during this simulation.
+
+**Check the current IP configuration:**
+
+```cmd
+ipconfig /all
+```
+
+**Release the current DHCP configuration:**
+
+```cmd
+ipconfig /release
+```
+
+**Request a new DHCP configuration:**
+
+```cmd
+ipconfig /renew
+```
+
+**Test connectivity to the default gateway:**
+
+```cmd
+ping 192.168.1.1
+```
+
+Note: `192.168.1.1` is an example gateway address. Replace it with the actual gateway address shown by `ipconfig /all` on an authorized device.
+
+**Important:** Releasing and renewing an IP address may temporarily interrupt network connectivity. Follow company procedures and obtain authorization before performing these actions on a managed device.
+
 ## 4. Investigation
 
 In this simulated scenario, other devices successfully obtain valid IP addresses from the office network.
 
 This suggests that the problem may be isolated to the laptop, although further investigation would be needed to confirm the cause.
+
+**Evidence limitation:** The APIPA address and DHCP findings are simulated. In a real investigation, verify the device's IP configuration, DHCP server availability, network adapter status, and relevant network logs before identifying the root cause.
 
 ## 5. Simulated Resolution
 
@@ -69,6 +103,8 @@ An authorized support technician investigates the laptop's DHCP connectivity and
 The laptop subsequently receives a valid company IP address, a default gateway, and DHCP server information.
 
 The exact underlying cause is not confirmed in this exercise.
+
+**Validation limitation:** The successful IP configuration and network connectivity are simulated outcomes. No live DHCP server was contacted, no real IP address was renewed, and no company network connectivity was tested.
 
 ## 6. Validation
 
