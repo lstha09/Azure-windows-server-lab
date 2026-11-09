@@ -119,11 +119,39 @@ These results describe the fictional exercise and are not evidence of a real inc
 | Teams update process | Check for available application updates |
 | IT service desk ticketing system | Record symptoms, steps, findings, and outcome |
 
+## 4.1 Example Windows PowerShell audio troubleshooting commands
+
+The following commands demonstrate how an authorized support technician could investigate microphone and audio-device issues. They were not executed during this simulation.
+
+**List available audio devices:**
+
+```powershell
+Get-CimInstance Win32_SoundDevice |
+    Select-Object Name, Manufacturer, Status
+```
+
+**Check Windows audio services:**
+
+```powershell
+Get-Service -Name Audiosrv, AudioEndpointBuilder
+```
+
+**Check the Windows version:**
+
+```powershell
+Get-ComputerInfo |
+    Select-Object WindowsProductName, WindowsVersion, OsBuildNumber
+```
+
+**Important:** These commands are for Windows devices, not macOS. They provide basic diagnostic information but do not directly test microphone sound quality or confirm that Teams can access the microphone. Do not restart services or change device settings without authorization.
+
 ## 5. Root Cause and Limitations
 
 **Simulated finding:** The microphone worked in Windows and Teams on the web. Restarting and updating the Teams desktop application was followed by successful microphone operation.
 
 **Root cause:** Not independently confirmed. The scenario suggests a possible desktop-client issue but does not prove exactly why the original failure occurred.
+
+**Evidence limitation:** The microphone tests, Teams web comparison, and successful desktop-client test are fictional examples. In a real investigation, a technician should verify the microphone input, application permissions, Teams behavior, and test-call results before confirming the cause or resolution.
 
 ## 6. Ticket Closure Notes
 
@@ -138,6 +166,8 @@ These results describe the fictional exercise and are not evidence of a real inc
 - Documented the troubleshooting steps and outcome.
 
 If the issue had continued, the next steps would include reviewing approved diagnostic information, checking device or driver issues, and escalating to the appropriate support team.
+
+**Validation limitation:** The successful microphone test and Teams desktop resolution described above are simulated outcomes. No live Windows computer, microphone, or Teams account was tested, and no actual application update or troubleshooting action was performed.
 
 ## 7. Security and Professional Practice
 
